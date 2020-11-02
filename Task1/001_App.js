@@ -1,31 +1,22 @@
-function Star(c) {
-    this.color = c;
-    let internalcolor = 'green';
 
-    this.SetInternalColor = function (c) {
-        internalcolor = c;
-    };
+window.onload = function () {
+    let div1 = document.getElementById("div_1");
 
-    this.GetInternalColor = function () {
-       return internalcolor;
-    };
+    for (let i = 0; i < 5; i++) {
+        let p1 = document.createElement("p")
+        p1.innerHTML = "Paragraph "+i;
+        div1.appendChild(p1);
+    }
+
+    setTimeout(function () {
+        let paragraphs = document.getElementsByTagName("p");
+
+        for (let i = 0; i < paragraphs.length; i++) {
+            paragraphs[i].style.textTransform = 'uppercase'
+        }
+    }, 5000)
+
+
+
 }
-
-
-Star.prototype.GetColor = function () {
-    return this.color;
-}
-
-Star.prototype.toString = function () {
-    return "Star is" + this.color;
-};
-
-
-let Star1 = new Star('Yellow');
-
-
-document.write(Star1.toString() + "<br />");
-document.write("Star color " + Star1.GetColor() + "<br />");
-document.write("Star internal color " + Star1.GetInternalColor() + "<br />");
-Star1.SetInternalColor('Black');
-document.write("Star internal color " + Star1.GetInternalColor() + "<br />");
+    
