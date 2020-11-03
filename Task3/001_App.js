@@ -13,6 +13,7 @@ Module_001__Apps.prototype.GetByNameClassChildNode= function (classname) {
     return document.getElementsByClassName(classname);
 }
 
+
 window.onload = function () {
 
     let obj = new Module_001__Apps();
