@@ -1,39 +1,28 @@
-function HumanSort(arr,sort){
+let Module_001__Apps = {};
+Module_001__Apps.Counter = null;
 
-    document.write('Not sort' + '<br>')
+function AddP() {
+    setTimeout(function () {
+        Module_001__Apps.Counter++;
+        if (Module_001__Apps.Counter >= 10) {
+            ClearP();
+        } else {
+            let div1 = document.getElementById("div_1");
 
-    document.write(arr.join(', '));
-
-    document.write('Is sort' + '<br>')
-
-    document.write(arr.sort(function(a,b){ return (sort===0 ? a.age-b.age: b.age-a.age) }).join(', '));
-
+            let p1 = document.createElement("p")
+            p1.innerHTML = "Paragraph " + Module_001__Apps.Counter;
+            div1.appendChild(p1);
+        }
+    }, 500)
 
 }
 
-function Human(name, age) {
-    this.age = age;
-    this.name = name;
-}
+function ClearP() {
 
+    Module_001__Apps.Counter = 0;
+    let div1 = document.getElementById("div_1");
 
-Human.prototype.toString = function () {
-    return "Name -" + this.name + ' age - ' + this.age + '<br/>';
-};
-
-let HumanFactory = function () {
-
-    let objectArray = [];
-
-    for (let i = 0; i < 10; i++) {
-        objectArray[i] = new Human('Pavel_' + i, RandomInRange(10, 59));
+    while (div1.hasChildNodes()) {
+        div1.removeChild(div1.firstChild);
     }
-
-    return objectArray;
-};
-
-function RandomInRange(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
 }
-
-HumanSort(HumanFactory(),+prompt('Set sort desc - 1 or asc - 0 ',1))
